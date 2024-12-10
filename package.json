@@ -9,13 +9,23 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:log",
+    "onCommand:extension.scanLogFile"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "vsce-log-viewer.scanLogFile",
         "title": "Scan Log File"
+      }
+    ],
+    "languages": [
+      {
+        "id": "log",
+        "extensions": [".log"],
+        "aliases": ["Log", "log"]
       }
     ]
   },
