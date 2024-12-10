@@ -16,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
       const diagnostics: vscode.Diagnostic[] = [];
 
       const errorRegex = /^ERROR(?::|\d+-\d+)\s*(.*)$/;
-      const warningRegex = /^WARNING\s+(.*)$/;
+      const warningRegex = /^WARNING:\s+(.*)$/;
 		const infoRegex = /^(INFO|NOTE):\s+(.*)$/;
 		const hintRegex = /^Notice:\s+(.*)$/;
       const continuationRegex = /^\s+(.*)$/;
