@@ -155,19 +155,25 @@ export function activate(context: vscode.ExtensionContext) {
       });
    };
 
+	const clearDiagnostics = () => {
+		diagnosticCollection.clear();
+	};
+
 	// Automatically scan log file opened in editor
    vscode.workspace.onDidOpenTextDocument(scanLogFile);
 
    context.subscriptions.push(
-      vscode.commands.registerCommand(
-			"vsce-log-viewer.scanLogFile",
-			() => {
-				const editor = vscode.window.activeTextEditor;
-				if (editor) {
-					scanLogFile(editor.document);
-				}
-			})
+      vscode.commands.registerCommand("vsce-log-viewer.scanLogFile", () => {
+         const editor = vscode.window.activeTextEditor;
+         if (editor) {
+            scanLogFile(editor.document);
+         }
+      })
    );
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand('extension.clearDiagnostics', clearDiagnostics)
+	);
 }
 
 export function deactivate() {}

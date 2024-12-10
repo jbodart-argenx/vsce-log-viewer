@@ -19,6 +19,10 @@
       {
         "command": "vsce-log-viewer.scanLogFile",
         "title": "Scan Log File"
+      },
+      {
+        "command": "vsce-log-viewer.clearLogDiagnostics",
+        "title": "Clear Log Diagnostics"
       }
     ],
     "languages": [
