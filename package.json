@@ -2,7 +2,10 @@
   "name": "jbodart-argenx-log-viewer",
   "displayName": "SAS Logs Viewer",
   "description": "A VScode extension to analyze (SAS) log files for issues",
+  "repository": "https://github.com/jbodart-argenx/vsce-log-viewer",
   "version": "1.0.0",
+  "publisher": "jbodart-argenx",
+  "license": "MIT",
   "icon": "icon.png",
   "engines": {
     "vscode": "^1.95.0"
@@ -53,7 +56,8 @@
     "lint": "eslint src",
     "test": "vscode-test",
     "update": "npx npm-check-updates -u",
-    "trace-deprecation": "node --trace-deprecation --force-node-api-uncaught-exceptions-policy=true ./node_modules/.bin/vsce package"
+    "trace-deprecation": "node --trace-deprecation --force-node-api-uncaught-exceptions-policy=true ./node_modules/.bin/vsce package",
+    "vsce": "npx vsce package"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
