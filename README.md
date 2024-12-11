@@ -1,71 +1,110 @@
-# vsce-log-viewer README
+# jbodart-argenx.log-viewer README
 
-This is the README for your extension "vsce-log-viewer". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "jbodart-argenx.log-viewer".
+It automatically scans any .log file open in a VScode Editor, for Errors, Warnings, and problematic Notes for SAS log files format, and writes diagnostics to the VScode "Problems" panel.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Custom / remote filesystems are supported.
 
-For example if there is an image subfolder under your extension project workspace:
+Errors and Warnings are automatically highlighted in the Editor. Problematic Notes highliting is more discrete.
 
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Consider installing extension '**Log File Highlighter**' to identify more easily Errors, Warnings, Notes, and other messages of interest in SAS log files.  With that extension, the following customizations are suggested (in `settings.json` file):
+```JSON
+   "editor.tokenColorCustomizations": {
+      "textMateRules": [
+         {
+            "scope": "markup.underline.link",
+            "settings": {
+               "foreground": "#9a2b84",
+               "fontStyle": "underline"
+            }
+         },
+         {
+            "scope": "log.error",
+            "settings": {
+               "foreground": "#af1f1f",
+               "fontStyle": "bold",
+            }
+         },
+         {
+            "scope": "log.warning",
+            "settings": {
+               "foreground": "#f4ad42",
+               "fontStyle": ""
+            }
+         },
+         {"scope": "log.constant", "settings": {"fontStyle": "",  "foreground": "#888888"}},
+         {"scope": "log.date", "settings": {"fontStyle": "",  "foreground": "#888888"}},
+         {"scope": "log.string", "settings": {"fontStyle": "",  "foreground": "#888888"}},
+         {"scope": "log.debug", "settings": {"fontStyle": ""}},
+         {"scope": "log.exception", "settings": {"fontStyle": ""}},
+         {"scope": "log.exceptiontype", "settings": {"fontStyle": ""}},
+         {"scope": "log.info", "settings": {"fontStyle": ""}},
+         {"scope": "log.verbose", "settings": {"fontStyle": ""}},
+      ],
+   },
+   "logFileHighlighter.customPatterns": [ 
+      {
+         "pattern": "^ERROR(:| \\d+-\\d+).*([\r\n]+\\s{2,28}\\S.*)*",
+         "patternFlags": "",
+         "highlightEntireLine": true,
+         "foreground": "#af1f1f",
+         "fontWeight": "bold",
+      },
+      {
+        "pattern": "^WARNING:.*([\r\n]+\\s{2,29}\\S.*)*",
+        "patternFlags": "",
+        "highlightEntireLine": true,
+        "foreground": "#f4ad42",
+        "fontWeight": "bold",
+      },
+      {
+      "pattern": "^NOTE: Libref \\w+.*([\r\n]+\\s{2,6}\\S.*)*",
+      "patternFlags": "",
+      "highlightEntireLine": true,
+      "foreground": "#42f46b",
+      },
+      {
+      "pattern": "^NOTE: (The (in)?file|Writing ODS \\w+(\\(\\w+\\))|Writing (HTML Body|EXCEL) file:|ODS \\w+(\\(\\w+\\))? printed\\s+).*([\r\n]+\\s{2,16}\\S.*)*",
+      "patternFlags": "",
+      "highlightEntireLine": true,
+      "foreground": "#55c56f",
+      },
+      {
+         "pattern": "^NOTE:.*([\r\n]+\\s{2,6}\\S.*)*",
+         "patternFlags": "",
+         "highlightEntireLine": true,
+         "foreground": "#426bf4",
+      },
+      {
+         "pattern": "^Notice:.*([\r\n]+\\s{2,6}\\S.*)*",
+         "patternFlags": "",
+         "highlightEntireLine": true,
+         "foreground": "#9542f4",
+      },
+   ],
+   "[log]": {
+      "editor.largeFileOptimizations": false,
+   },
+```
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+N/A.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+N/A.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+It may take a while to scan very large log files. 
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Initial release.
 
 ---
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
