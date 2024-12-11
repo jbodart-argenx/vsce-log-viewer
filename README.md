@@ -1,7 +1,6 @@
-# jbodart-argenx.log-viewer README
+# jbodart-argenx-log-viewer README
 
-This is the README for your extension "jbodart-argenx.log-viewer".
-It automatically scans any .log file open in a VScode Editor, for Errors, Warnings, and problematic Notes for SAS log files format, and writes diagnostics to the VScode "Problems" panel.
+This extension automatically scans any .log file open in a VScode Editor, for Errors, Warnings, and problematic Notes for SAS log files format, and writes diagnostics to the VScode "Problems" panel.
 
 ## Features
 
