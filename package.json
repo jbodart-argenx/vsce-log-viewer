@@ -29,6 +29,29 @@
         "title": "Clear Log Diagnostics"
       }
     ],
+    "menus": {
+        "explorer/context": [
+            {
+                "command": "jbodart-argenx-log-viewer.scanLogFile",
+                "when": "resourceExtname == '.log'",
+                "group": "5_tools"
+            }
+        ],
+        "editor/context": [
+            {
+                "command": "jbodart-argenx-log-viewer.scanLogFile",
+                "when": "resourceExtname == '.log'",
+                "group": "4_tools"
+            }
+        ],
+        "editor/title/context": [
+            {
+                "command": "jbodart-argenx-log-viewer.scanLogFile",
+                "when": "resourceExtname == '.log'",
+                "group": "4_tools"
+            }
+        ]
+      },
     "languages": [
       {
         "id": "log",
