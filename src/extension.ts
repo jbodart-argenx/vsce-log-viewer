@@ -16,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
       } else if (document && document.hasOwnProperty('uri')) {
          documentUri = document.uri;
       }
-      if (! documentUri) {
+      if (documentUri === null) {
          return;
       }
       if (! /\.log/.test(documentUri.path)) {
@@ -82,6 +82,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 
          rl.on("line", (line) => {
+            if (documentUri === null) {
+               return;
+            }
             if (problems>=499) {
                console.warn(`(log-viewer) scanLogFile: File "${path.basename(documentUri.path)}" has >= ${problems} problems; scan will stop.`);
                diagnostics.push(new vscode.Diagnostic(
@@ -256,7 +259,9 @@ export function activate(context: vscode.ExtensionContext) {
                   currentSeverity!
                );
                diagnostics.push(diagnostic);
-               diagnosticCollection.set(documentUri, diagnostics);
+               if (documentUri !== null) {
+                  diagnosticCollection.set(documentUri, diagnostics);
+               }
             }
          });
          
